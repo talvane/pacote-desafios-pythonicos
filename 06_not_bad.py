@@ -9,9 +9,21 @@ por 'good' e retorne a string resultante.
 Exemplo: 'The dinner is not that bad!' retorna 'The dinner is good!'
 """
 
+import re
+
 def not_bad(s):
     # +++ SUA SOLUÇÃO +++
-    return
+
+    str_not = re.search(r"\bnot\b", s).start() if re.search(r"\bnot\b", s) != None else 0
+    str_bad = re.search(r"\bbad\b", s).start() if re.search(r"\bbad\b", s) != None else 0
+
+    if str_bad > str_not:
+        str_bad_end = re.search(r"\bbad\b", s).end()
+        keytext = s[str_not:str_bad_end]
+        text = s.replace(keytext, 'good')
+        return text
+
+    return s
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---

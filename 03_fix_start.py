@@ -15,7 +15,9 @@ onde todas as instancias de stra foram substituidas por strb.
 
 def fix_start(s):
     # +++ SUA SOLUÇÃO +++
-    return
+
+    initKey = s[0]
+    return ''.join([initKey, s[1:].replace(initKey, '*')])
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---

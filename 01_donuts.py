@@ -11,7 +11,11 @@ e donuts(23) retorna 'Number of donuts: many'
 
 def donuts(count):
     # +++ SUA SOLUÇÃO +++
-    return
+
+    text = 'Number of donuts: '
+    keyword = 'many' if count >= 10 else str(count)
+
+    return ''.join([text, keyword])
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
