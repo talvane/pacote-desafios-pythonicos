@@ -14,16 +14,7 @@ import re
 def not_bad(s):
     # +++ SUA SOLUÇÃO +++
 
-    str_not = re.search(r"\bnot\b", s).start() if re.search(r"\bnot\b", s) != None else 0
-    str_bad = re.search(r"\bbad\b", s).start() if re.search(r"\bbad\b", s) != None else 0
-
-    if str_bad > str_not:
-        str_bad_end = re.search(r"\bbad\b", s).end()
-        keytext = s[str_not:str_bad_end]
-        text = s.replace(keytext, 'good')
-        return text
-
-    return s
+    return re.sub(r'not.*bad', 'good', s)
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
