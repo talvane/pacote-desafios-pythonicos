@@ -11,9 +11,16 @@ Dica: Isso pode ser resolvido criando 2 listas e ordenando cada uma
 antes de combina-las.
 """
 
+import string
+
 def front_x(words):
     # +++ SUA SOLUÇÃO +++
-    return
+
+    words.sort()
+    custom_order = list(string.ascii_lowercase)
+    custom_order.insert(0, 'x')
+    ordered = sorted(words, key=lambda word: custom_order.index(word[0]))
+    return ordered
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
