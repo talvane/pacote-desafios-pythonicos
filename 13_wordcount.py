@@ -56,6 +56,37 @@ import sys
 
 # +++ SUA SOLUÇÃO +++
 # Defina as funções print_words(filename) e print_top(filename).
+def print_words(file):
+    dicLetras = count_words(file)
+    print_result(dicLetras, len(dicLetras), False)
+
+
+def print_top(file):
+    dicLetras = count_words(file)
+    print_result(dicLetras, 20, True)
+
+
+def print_result(countLetras: dict, topLimit, reverseOrder):
+    listLetras = list(countLetras.items())
+    if reverseOrder:
+        listLetras.sort(key=lambda word: word[1], reverse=True)
+    for key, value in listLetras[:topLimit]:
+        print(key, value)
+
+
+def count_words(filename):
+    with open(filename) as letras:
+        countLetras = {}
+
+        for letra in letras.read().lower().split():
+            count = 1
+            if countLetras.get(letra) != None:
+                count = countLetras.get(letra) + 1
+                countLetras[ letra ] = count
+            else:
+                countLetras[ letra ] = count
+
+        return countLetras
 
 
 # A função abaixo chama print_words() ou print_top() de acordo com os
@@ -65,8 +96,8 @@ def main():
         print('Utilização: ./13_wordcount.py {--count | --topcount} file')
         sys.exit(1)
 
-    option = sys.argv[1]
-    filename = sys.argv[2]
+    option = sys.argv[ 1 ]
+    filename = sys.argv[ 2 ]
     if option == '--count':
         print_words(filename)
     elif option == '--topcount':
